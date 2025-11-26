@@ -54,7 +54,6 @@ function extractContentItems(html: string): ContentItem[] {
 
 function App() {
   const editorRef = useRef<HTMLDivElement | null>(null);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isSending, setIsSending] = useState(false);
   const [status, setStatus] = useState<string>('');
@@ -84,10 +83,6 @@ function App() {
       insertImage(file);
       event.target.value = '';
     }
-  };
-
-  const openFilePicker = () => {
-    fileInputRef.current?.click();
   };
 
   const handleSend = async () => {
@@ -135,16 +130,10 @@ function App() {
         <button type="button" onClick={() => handleFormat('italic')}>
           Italic
         </button>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          style={{ display: 'none' }}
-        />
-        <button type="button" onClick={openFilePicker}>
-          Insert Image
-        </button>
+        <label style={{ display: 'inline-block' }}>
+          <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
+          <button type="button">Insert Image</button>
+        </label>
       </div>
 
       <div
