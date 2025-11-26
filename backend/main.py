@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 MODEL_NAME = "qwen3-vl"
-VLLM_BASE_URL = "http://localhost:8000/v1"
+VLLM_BASE_URL = "http://localhost:8888/v1"
 API_KEY = "EMPTY"
 
 app = FastAPI(title="mllm-chat-editor backend")
